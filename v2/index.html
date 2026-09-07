@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SocialBot board v2 · Sep 7–11, 2026</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <div class="brand">SocialBot board v2</div>
+        <h1>Week of <span id="weekLabel">Sep 7–11, 2026</span></h1>
+        <p class="sub">Editorial review · personal LinkedIn + X only. Edit copy inline, promote from the story queue, export your lock.</p>
+      </div>
+      <div class="badge-row">
+        <span class="pill"><strong>Status</strong> awaiting lock</span>
+        <span class="pill"><strong>Channels</strong> LinkedIn · X</span>
+        <span class="pill version">build: SocialBot board v2</span>
+      </div>
+    </header>
+
+    <p class="mix">1 ready text · 1 clip · 1 essay slot · 1 news slot · 1 chart. Same take twice banned across days.</p>
+
+    <div class="days-scroll">
+      <section class="days" id="days" aria-label="Week calendar row"></section>
+    </div>
+
+    <section class="queue-section" aria-label="Story queue">
+      <div class="queue-head">
+        <h2>Story queue</h2>
+        <p class="queue-sub">Alternates under the calendar row. Promote marks it in localStorage — swap into a day by editing that day's copy.</p>
+      </div>
+      <div class="queue" id="queue"></div>
+    </section>
+
+    <section class="panel decisions-panel">
+      <h2>Your decisions</h2>
+      <div id="decisions"></div>
+    </section>
+
+    <footer class="footer">
+      <div>Draft-for-approval · never posts without your OK · data weekOf 2026-09-07</div>
+      <div class="badge-row">
+        <button class="primary" id="export">Export lock JSON</button>
+        <button id="reset">Reset board</button>
+      </div>
+    </footer>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
