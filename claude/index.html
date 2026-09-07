@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Claude brief · SocialBot-exec · Week of Sep 7–11</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <div class="brand">Claude brief · SocialBot-exec</div>
+        <h1>Week of <span id="week">…</span></h1>
+        <p class="sub">Dark alternate review board from the same calendar. Approve, kill, or annotate each day. Not produced by Claude CLI — SocialBot-exec stand-in after OAuth expiry.</p>
+      </div>
+      <div class="badge-row">
+        <span class="pill"><strong>Status</strong> awaiting lock</span>
+        <span class="pill"><strong>Channels</strong> LinkedIn · X</span>
+        <span class="pill version">build: Claude-brief · SocialBot-exec</span>
+      </div>
+    </header>
+
+    <p class="mix" id="mix"></p>
+    <section class="grid" id="grid" aria-label="Week days"></section>
+
+    <section class="side">
+      <div class="panel">
+        <h2>Holding</h2>
+        <ul id="holding"></ul>
+      </div>
+      <div class="panel">
+        <h2>Optional swaps</h2>
+        <ul id="swaps"></ul>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:16px">
+      <h2>Your decisions</h2>
+      <ul id="decisions"></ul>
+    </section>
+
+    <footer class="footer">
+      <div>Draft-for-approval · never posts without your OK</div>
+      <div class="badge-row">
+        <button class="primary" id="export">Export lock JSON</button>
+        <button id="reset">Reset decisions</button>
+      </div>
+    </footer>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>

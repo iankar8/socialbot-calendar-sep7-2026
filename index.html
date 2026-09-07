@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SocialBot Calendar Compare · Sep 7–11, 2026</title>
+  <style>
+    :root {
+      --cream: #F4EFE0;
+      --ink: #1B1612;
+      --rust: #C84518;
+      --paper: #FBF7EC;
+      --line: rgba(27,22,18,0.12);
+      --mute: #6B5E52;
+      --dark: #0F1419;
+      --dark-card: #1A2332;
+      --claude-accent: #7C9CE8;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--cream); color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(1000px 500px at 0% -10%, rgba(200,69,24,0.1), transparent 50%),
+        radial-gradient(800px 400px at 100% 10%, rgba(124,156,232,0.12), transparent 45%),
+        var(--cream);
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
+    .brand { letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; color: var(--rust); font-weight: 700; }
+    h1 { margin: 8px 0 0; font-size: clamp(28px, 5vw, 40px); line-height: 1.1; }
+    .sub { color: var(--mute); margin: 12px 0 36px; font-size: 15px; max-width: 48ch; }
+    .cards { display: grid; gap: 16px; }
+    a.card {
+      display: block; text-decoration: none; color: inherit;
+      padding: 22px 20px; border-radius: 18px; border: 1px solid var(--line);
+      background: var(--paper); box-shadow: 0 18px 50px rgba(27,22,18,0.08);
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    a.card:hover { transform: translateY(-2px); border-color: rgba(200,69,24,0.4); }
+    a.card.dark {
+      background: var(--dark-card); color: #E8EEF7; border-color: rgba(124,156,232,0.25);
+    }
+    a.card.dark:hover { border-color: var(--claude-accent); }
+    a.card.dark .tag { color: var(--claude-accent); }
+    a.card.dark .desc { color: #A8B4C8; }
+    .tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--rust); margin-bottom: 8px; }
+    .title { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+    .desc { color: var(--mute); font-size: 14px; margin: 0; line-height: 1.45; }
+    footer { margin-top: 40px; font-size: 13px; color: var(--mute); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">SocialBot · Calendar Compare</div>
+    <h1>Week of Sep 7–11, 2026</h1>
+    <p class="sub">Two self-contained editorial review boards from the same calendar JSON. Approve, kill, annotate — then export your lock. Personal X + LinkedIn only.</p>
+    <div class="cards">
+      <a class="card" href="./socialbot/">
+        <div class="tag">Cream · iankar identity</div>
+        <p class="title">SocialBot</p>
+        <p class="desc">Original cream board (#F4EFE0 / #1B1612 / #C84518). Approve · kill · notes · localStorage · export.</p>
+      </a>
+      <a class="card dark" href="./claude/">
+        <div class="tag">Dark · Claude brief · SocialBot-exec</div>
+        <p class="title">Claude brief · SocialBot-exec</p>
+        <p class="desc">Visually distinct dark alternate from the same data. Not produced by Claude CLI (OAuth expired). Same approve / kill / notes / export.</p>
+      </a>
+    </div>
+    <footer>Draft-for-approval · never posts without your OK · data weekOf 2026-09-07</footer>
+  </div>
+</body>
+</html>
