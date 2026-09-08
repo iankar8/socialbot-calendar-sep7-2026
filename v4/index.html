@@ -183,6 +183,38 @@ details.meta[open] summary::before{content:"–"}
   .mast-row{flex-direction:column; gap:4px}
   .meta-grid{grid-template-columns:1fr}
 }
+
+/* editorial command */
+.editorial{
+  margin-top:var(--space-lg); padding-top:var(--space-md); border-top:1px dashed var(--rule-2);
+}
+.editorial label{display:block; margin-bottom:6px}
+.editorial textarea{
+  display:block; width:100%; min-height:64px; border:1px solid var(--rule-2); border-left:3px solid var(--accent);
+  background:var(--paper-2); padding:10px 12px; font-family:var(--font-body); font-size:15px; line-height:1.45;
+  color:var(--ink); resize:vertical; outline:none;
+}
+.editorial textarea:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+.editorial textarea::placeholder{color:var(--muted); font-style:italic}
+
+/* masthead send-back */
+.sendback{
+  display:flex; flex-wrap:wrap; gap:var(--space-md); align-items:center; margin:0 0 var(--space-lg);
+  padding:12px 0; border-bottom:1px solid var(--rule);
+}
+.sendback .help{flex:1 1 220px; font-size:14px; color:var(--quiet); margin:0; max-width:48ch; line-height:1.4}
+.btn-primary{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.14em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); border:2px solid var(--ink); padding:10px 14px; cursor:pointer;
+  transition:background var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+}
+.btn-primary:hover{background:var(--accent); border-color:var(--accent); color:var(--paper)}
+.btn-primary.flash{background:var(--live); border-color:var(--live)}
+.btn-ghost-solid{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.14em; text-transform:uppercase;
+  background:transparent; color:var(--ink); border:1px solid var(--rule-2); padding:10px 14px; cursor:pointer;
+}
+.btn-ghost-solid:hover{border-color:var(--ink)}
 </style>
 </head>
 <body>
@@ -196,6 +228,11 @@ details.meta[open] summary::before{content:"–"}
     <h1>Week of <em>7 September</em></h1>
     <p class="dek">One entry per weekday, copy first. LinkedIn and X both show in full under each day — edit either in place. Metadata folds under each entry. <i>Alternates wait in the queue below the week.</i></p>
     <div class="almanac" id="almanac"></div>
+    <div class="sendback">
+      <p class="help">Paste the packet in SocialBot chat, or drop the JSON file there. Edits are not visible to SocialBot until you send.</p>
+      <button class="btn-primary" id="copyPacket" type="button">Copy packet for SocialBot</button>
+      <button class="btn-ghost-solid" id="export" type="button">Export JSON</button>
+    </div>
   </header>
 
   <section class="ledger" id="ledger" aria-label="Week of 7 September, one entry per day"></section>
@@ -210,16 +247,15 @@ details.meta[open] summary::before{content:"–"}
   </section>
 
   <footer class="foot">
-    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only</span>
+    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only · KEY socialbot-board-v4c</span>
     <span class="actions">
-      <button class="ghost" id="export" type="button">Export lock</button>
       <button class="ghost quiet" id="reset" type="button">Reset board</button>
     </span>
   </footer>
 </div>
 
 <script>
-const KEY = "socialbot-board-v4b";;
+const KEY = "socialbot-board-v4c";
 
 const DATA = {
   weekOf: "2026-09-07",
@@ -247,24 +283,24 @@ claude for email isn't adoption. agents can run the back office if someone sets 
 Human oversight is still carrying most of these systems. The control plane is the product before autonomy is.
 
 (Clip: Aaron Katz · ClickHouse · 20VC — sequential VO vertical ~60s)`,
-      x:`agents that provision infra need identity, authorization, and a budget first.
+      x:`"They need to have authorization, they need an identity, they need to have a budget, right? To be able to consume those services."
 
-human oversight is still carrying the system. control plane before autonomy.` },
+— Aaron Katz · ClickHouse · 20VC` },
     { id:"wed", date:"2026-09-09", dow:"Wednesday", short:"Wed", num:"09", subject:"Nvidia China-hedge",
       blurb:"Nvidia’s open-model spend is a hedge against a substitute stack: Chinese weights on Chinese silicon — not charity vs rival software.", status:"needs", statusLabel:"Needs draft",
       format:"Essay slice / thread", source:"Locked Nvidia essay · unused §7 twist (≠ 08-28 P&L take)", type:"Essay", graphic:"—",
-      linkedin:`DRAFT FRAME — edit or kill.
+      linkedin:`Joel Spolsky’s line still holds: “commoditize your complements.”
 
-Microsoft ran “commoditize your complement” against rival software vendors. Nvidia is running the same play against a different enemy: Chinese open models on Chinese chips.
+Microsoft ran that play against rival software vendors — open the layer next to yours so competitors can’t extract rent there. Nvidia is running the same play against a different enemy: Chinese models on Chinese chips as a substitute stack.
 
-CUDA already locked the hardware layer. Nemotron + the tooling stack is the attempt to lock the model-layer experience while the weights stay open.
+CUDA already locked the hardware layer. Nemotron + the tooling stack is the attempt to lock the model-layer experience while the weights stay open — so the substitute stack never becomes the default.
 
 The news (Poolside / Hugging Face talks) is public. The twist is the enemy, not the check size.
 
 Source essay locked; this social slice still needs your voice before ship.`,
-      x:`DRAFT FRAME — edit or kill.
+      x:`joel spolsky: “commoditize your complements.”
 
-nvidia open-source spend isn’t vs rival software vendors. it’s a hedge against chinese models on chinese chips.
+microsoft vs software vendors. nvidia vs chinese models on chinese chips — a substitute stack, not a rival product line.
 
 cuda locked the rack. the tooling stack is the attempt to lock the model-layer experience while weights stay open.`, placeholder:true },
     { id:"thu", date:"2026-09-10", dow:"Thursday", short:"Thu", num:"10", subject:"Cisco open-weight agent traffic",
@@ -290,14 +326,14 @@ https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-
       format:"Chart or text", source:"CoS CVE parabolic chart / draft", type:"Chart", graphic:"a16z critical vulns parabolic",
       linkedin:`Critical and high-severity CVEs at major software cos went from under ~100 critical a month to 600+, with high over 2,000, in mid-2026.
 
-That is not a slow creep. Patch calendars, SLA clocks, and cyber insurance models were still priced for the old slope.
+That is not a slow creep. Patch calendars, SLA clocks, and cyber insurance models were still priced for linear growth.
 
-If you are also shipping agents with write access into that stack, I think the control plane problem and the vuln problem are the same budget conversation. One without the other is theater.`,
+Meanwhile agents are getting write access into the same stack. The vuln budget and the agent control-plane budget are one decision, not two. Price them apart and you will underwrite the breach.`,
       x:`critical cves at big software cos went from under ~100/month to 600+. high severity cleared 2,000.
 
-patch calendars and cyber insurance were priced for the old slope.
+patch calendars were priced for linear growth. agents are getting write access into the same stack.
 
-if you're also giving agents write access into that stack, the control plane and the vuln budget are the same conversation.` }
+the vuln budget and the agent control-plane budget are one decision, not two.` }
   ],
   queue: [
     { id:"q-cio-dive", kind:"Scout", title:"CIO Dive: agentic AI → outcome-based billing",
@@ -327,7 +363,7 @@ if you're also giving agents write access into that stack, the control plane and
 /* ---------- state ---------- */
 function fresh(){
   const s = { days:{}, promoted:{} };
-  DATA.days.forEach(d => s.days[d.id] = { decision:null, linkedin:d.linkedin, x:d.x, editing:false, editedAt:null });
+  DATA.days.forEach(d => s.days[d.id] = { decision:null, editorial:"", linkedin:d.linkedin, x:d.x, editing:false, editedAt:null });
   DATA.queue.forEach(q => s.promoted[q.id] = false);
   return s;
 }
@@ -344,7 +380,7 @@ function load(){
 }
 function persist(s){
   const out = { days:{}, promoted:s.promoted };
-  Object.entries(s.days).forEach(([id,v]) => out.days[id] = { decision:v.decision, linkedin:v.linkedin, x:v.x, editedAt:v.editedAt });
+  Object.entries(s.days).forEach(([id,v]) => out.days[id] = { decision:v.decision, editorial:v.editorial||"", linkedin:v.linkedin, x:v.x, editedAt:v.editedAt });
   try{ localStorage.setItem(KEY, JSON.stringify(out)); }catch(e){}
 }
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
@@ -415,6 +451,11 @@ function entryHTML(d, v){
       </div>
     </details>
 
+    <div class="editorial">
+      <label class="mono" for="ed-${d.id}">Editorial command</label>
+      <textarea id="ed-${d.id}" data-editorial spellcheck="true" placeholder="Instructions for SocialBot — rewrite X as a direct quote + clip…">${esc(v.editorial||"")}</textarea>
+    </div>
+
     <div class="decide">
       <button class="ghost quiet ${v.decision==='approve'?'on approve':''}" data-decide="approve" type="button">Approve</button>
       <button class="ghost quiet ${v.decision==='hold'?'on':''}" data-decide="hold" type="button">Hold</button>
@@ -476,26 +517,119 @@ function wire(s){
       v.decision = v.decision===b.dataset.decide ? null : b.dataset.decide;
       persist(s); render(s);
     }));
+    const ed = el.querySelector("[data-editorial]");
+    if(ed){
+      ed.addEventListener("change", () => { v.editorial = ed.value; persist(s); });
+      ed.addEventListener("blur", () => { v.editorial = ed.value; persist(s); });
+      let t;
+      ed.addEventListener("input", () => { v.editorial = ed.value; clearTimeout(t); t=setTimeout(()=>persist(s), 250); });
+    }
   });
   document.querySelectorAll(".qrow").forEach(row => {
     row.querySelector("[data-promote]").addEventListener("click", () => { s.promoted[row.dataset.qid] = !s.promoted[row.dataset.qid]; persist(s); render(s); });
   });
 }
 
-function exportLock(s){
-  const payload = {
-    weekOf: DATA.weekOf, exportedAt: new Date().toISOString(),
-    days: DATA.days.map(d => { const v = s.days[d.id]; return { id:d.id, date:d.date, subject:d.subject, decision:v.decision, linkedin:v.linkedin, x:v.x, linkedinEdited:v.linkedin!==d.linkedin, xEdited:v.x!==d.x }; }),
-    queue: DATA.queue.map(q => ({ id:q.id, kind:q.kind, title:q.title, summary:q.summary||'', url:q.url||'', promoted:!!s.promoted[q.id] }))
+function buildPayload(s){
+  const exportedAt = new Date().toISOString();
+  const days = DATA.days.map(d => {
+    const v = s.days[d.id];
+    return {
+      id:d.id, date:d.date, dow:d.dow, short:d.short, subject:d.subject,
+      decision:v.decision, editorial:v.editorial||"", linkedin:v.linkedin, x:v.x,
+      linkedinEdited:v.linkedin!==d.linkedin, xEdited:v.x!==d.x
+    };
+  });
+  const queue = DATA.queue.map(q => ({
+    id:q.id, kind:q.kind, title:q.title, summary:q.summary||"", url:q.url||"", promoted:!!s.promoted[q.id]
+  }));
+  return { weekOf: DATA.weekOf, exportedAt, days, queue, promoted: queue.filter(q => q.promoted) };
+}
+
+function fence(text){
+  return "```\n" + String(text||"").replace(/\n+$/,"") + "\n```";
+}
+
+function buildMarkdownPacket(payload){
+  const lines = [];
+  lines.push(`## SocialBot board packet · ${payload.weekOf} · ${payload.exportedAt}`);
+  payload.days.forEach(d => {
+    lines.push(`### ${d.short} · ${d.subject}`);
+    lines.push(`- decision: ${d.decision || "—"}`);
+    lines.push(`- editorial: ${d.editorial ? d.editorial.replace(/\n/g, " ") : "—"}`);
+    lines.push(`- linkedin:`);
+    lines.push(fence(d.linkedin));
+    lines.push(`- x:`);
+    lines.push(fence(d.x));
+    lines.push("");
+  });
+  lines.push("### Queue promotions");
+  const promo = payload.promoted.length ? payload.promoted : payload.queue.filter(q => q.promoted);
+  if(!promo.length){
+    lines.push("(none)");
+  } else {
+    promo.forEach(q => {
+      lines.push(`- [${q.kind}] ${q.title}${q.url ? " — " + q.url : ""}`);
+      if(q.summary) lines.push(`  ${q.summary}`);
+    });
+  }
+  // also list all queue with promoted flag for context
+  lines.push("");
+  lines.push("### Full queue");
+  payload.queue.forEach(q => {
+    lines.push(`- ${q.promoted ? "★ " : ""}${q.title}${q.url ? " — " + q.url : ""}`);
+  });
+  return lines.join("\n");
+}
+
+function downloadPacketJson(payload){
+  const day = payload.exportedAt.slice(0,10);
+  const slim = {
+    weekOf: payload.weekOf,
+    exportedAt: payload.exportedAt,
+    days: payload.days.map(d => ({
+      id:d.id, decision:d.decision, editorial:d.editorial, linkedin:d.linkedin, x:d.x
+    })),
+    queue: payload.queue,
+    promoted: payload.promoted
   };
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(slim,null,2)], {type:"application/json"}));
+  a.download = `socialbot-board-packet-${day}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+function exportLock(s){
+  const payload = buildPayload(s);
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)], {type:"application/json"}));
   a.download = `socialbot-lock-${DATA.weekOf}.json`; a.click(); URL.revokeObjectURL(a.href);
 }
 
+async function copyPacket(s){
+  const payload = buildPayload(s);
+  const md = buildMarkdownPacket(payload);
+  downloadPacketJson(payload);
+  try{
+    await navigator.clipboard.writeText(md);
+  }catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = md; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); document.body.removeChild(ta);
+  }
+  const btn = document.getElementById("copyPacket");
+  if(btn){
+    const prev = btn.textContent;
+    btn.textContent = "Copied · packet + JSON";
+    btn.classList.add("flash");
+    setTimeout(() => { btn.textContent = prev; btn.classList.remove("flash"); }, 1800);
+  }
+}
+
 const state = load();
 render(state);
 document.getElementById("export").addEventListener("click", () => exportLock(state));
+document.getElementById("copyPacket").addEventListener("click", () => copyPacket(state));
 document.getElementById("reset").addEventListener("click", () => { if(confirm("Reset decisions, edits and promotions for this week?")){ localStorage.removeItem(KEY); location.reload(); } });
 </script>
 </body>
