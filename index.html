@@ -3,87 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SocialBot · Sep 7–11, 2026</title>
+  <title>SocialBot calendar compare</title>
   <style>
-    :root {
-      --cream: #F4EFE0;
-      --ink: #1B1612;
-      --rust: #C84518;
-      --paper: #FBF7EC;
-      --line: rgba(27,22,18,0.12);
-      --mute: #6B5B45;
-      --dark: #0F1419;
-      --dark-card: #1A2332;
-      --claude-accent: #7C9CE8;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; background: var(--cream); color: var(--ink);
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(1000px 500px at 0% -10%, rgba(200,69,24,0.1), transparent 50%),
-        radial-gradient(800px 400px at 100% 10%, rgba(124,156,232,0.12), transparent 45%),
-        var(--cream);
-    }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
-    .brand { letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; color: var(--rust); font-weight: 700; }
-    h1 { margin: 8px 0 0; font-size: clamp(28px, 5vw, 40px); line-height: 1.1; }
-    .sub { color: var(--mute); margin: 12px 0 36px; font-size: 15px; max-width: 48ch; }
-    .cards { display: grid; gap: 16px; }
-    a.card {
-      display: block; text-decoration: none; color: inherit;
-      padding: 22px 20px; border-radius: 18px; border: 1px solid var(--line);
-      background: var(--paper); box-shadow: 0 18px 50px rgba(27,22,18,0.08);
-      transition: transform .15s ease, border-color .15s ease;
-    }
-    a.card:hover { transform: translateY(-2px); border-color: rgba(200,69,24,0.4); }
-    a.card.primary { border-color: rgba(200,69,24,0.45); outline: 2px solid rgba(200,69,24,0.2); }
-    a.card.dark {
-      background: var(--dark-card); color: #E8EEF7; border-color: rgba(124,156,232,0.25);
-    }
-    a.card.dark:hover { border-color: var(--claude-accent); }
-    a.card.dark .tag { color: var(--claude-accent); }
-    a.card.dark .desc { color: #A8B4C8; }
-    a.card.muted { opacity: 0.85; }
-    .tag { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--rust); margin-bottom: 8px; }
-    .title { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
-    .desc { color: var(--mute); font-size: 14px; margin: 0; line-height: 1.45; }
-    .section { margin-top: 28px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); font-weight: 700; }
-    footer { margin-top: 40px; font-size: 13px; color: var(--mute); }
+    body{margin:0;font-family:Georgia,serif;background:#F4EFE0;color:#1B1612;padding:40px 20px}
+    .wrap{max-width:640px;margin:0 auto}
+    h1{font-size:32px;margin:0 0 8px}
+    p{color:#6B5B45;line-height:1.5}
+    a.card{display:block;background:#ECE5D2;border:1px solid rgba(27,22,18,.12);border-radius:4px;padding:18px;margin:12px 0;text-decoration:none;color:inherit}
+    a.card:hover{border-color:#C84518}
+    .tag{color:#C84518;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+    .muted{opacity:.7}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="brand">SocialBot · Editorial Board</div>
-    <h1>Week of Sep 7–11, 2026</h1>
-    <p class="sub">Personal X + LinkedIn only. Approve, edit LI/X inline, promote from the story queue, export your lock.</p>
-    <div class="cards">
-      <a class="card primary" href="./v3/">
-        <div class="tag">Current · cream · stacked column</div>
-        <p class="title">SocialBot board v3</p>
-        <p class="desc">Broadsheet column — days stacked full-width. Full LinkedIn draft in flow (no nested scroll). X behind a tab. Inline editors · story queue under · export lock. Model A, copy-first.</p>
-      </a>
-    </div>
-    <div class="section">Archive</div>
-    <div class="cards" style="margin-top:12px">
-      <a class="card muted" href="./v2/">
-        <div class="tag">v2 · cream · calendar row</div>
-        <p class="title">SocialBot board v2</p>
-        <p class="desc">Five-day calendar row. Inline LI/X editors and story queue — retired for nested draft scrollbars.</p>
-      </a>
-      <a class="card muted" href="./socialbot/">
-        <div class="tag">v1 · cream grid</div>
-        <p class="title">SocialBot (v1)</p>
-        <p class="desc">Original cream board — metadata-first cards, approve/kill/notes.</p>
-      </a>
-      <a class="card dark muted" href="./claude/">
-        <div class="tag">Dark · Claude brief stand-in</div>
-        <p class="title">Claude brief · SocialBot-exec</p>
-        <p class="desc">Dark alternate from the same early calendar JSON.</p>
-      </a>
-    </div>
-    <footer>Draft-for-approval · never posts without your OK · data weekOf 2026-09-07</footer>
+    <div class="tag">Compare</div>
+    <h1>SocialBot editorial board</h1>
+    <p>Model A unlock surface. Prefer the current ledger.</p>
+    <a class="card" href="./v4/"><div class="tag">Current · v4</div><strong>Ledger / broadsheet</strong><p>Claude art-director · copy-is-layout · no nested scroll</p></a>
+    <a class="card muted" href="./v3/"><div class="tag">Archived · v3</div><strong>Stacked column</strong><p>Earlier column pass</p></a>
+    <a class="card muted" href="./v2/"><div class="tag">Archived · v2</div><strong>Calendar row</strong><p>Rejected — nested scroll boxes</p></a>
   </div>
 </body>
 </html>
