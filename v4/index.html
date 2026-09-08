@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SocialBot · Week of 7 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<style>
+/* Hallmark · macrostructure: Long Document (ledger column) · tone: editorial / print program
+ * theme: studied-DNA (source: iankar-visual-identity) · paper #F4EFE0 · accent rust #C84518
+ * nav: none (single surface) · footer: Ft4 microframe · enrichment: none (typography only)
+ * pre-emit critique: P5 H5 E4 S5 R5 V4
+ */
+:root{
+  --paper:#F4EFE0; --paper-2:#ECE5D2; --paper-3:#E2D9C1;
+  --ink:#1B1612; --ink-2:#2E2820; --quiet:#6B5B45; --muted:#9A8E78;
+  --rule:rgba(27,22,18,.12); --rule-2:rgba(27,22,18,.28);
+  --accent:#C84518; --accent-warm:#E36138; --live:#2E7A3E;
+  --live-halo:rgba(46,122,62,.25); --accent-faint:rgba(200,69,24,.08);
+  --font-display:"Bricolage Grotesque",system-ui,sans-serif;
+  --font-livery:"Big Shoulders Display","Bricolage Grotesque",sans-serif;
+  --font-body:"Source Serif 4",Georgia,"Iowan Old Style",serif;
+  --font-mono:"Departure Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --space-xs:4px; --space-sm:8px; --space-md:16px; --space-lg:28px; --space-xl:44px; --space-2xl:72px;
+  --text-xs:10px; --text-sm:11.5px; --text-base:18px; --text-lg:20px; --text-xl:26px; --text-2xl:42px;
+  --measure:780px;
+  --ease-out:cubic-bezier(.2,.7,.2,1); --dur:140ms;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{background:var(--paper)}
+body{
+  margin:0; color:var(--ink); background:var(--paper);
+  font-family:var(--font-body); font-size:var(--text-base); line-height:1.55;
+  font-variation-settings:"opsz" 18;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--measure); margin:0 auto; padding:var(--space-lg) 22px var(--space-2xl)}
+
+/* ---------- mono register ---------- */
+.mono{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.18em; text-transform:uppercase; color:var(--quiet)}
+.livery{font-family:var(--font-livery); font-style:italic; font-weight:800; color:var(--accent); line-height:.85; letter-spacing:-.01em}
+
+/* ---------- masthead ---------- */
+.masthead{border-top:3px solid var(--ink); padding-top:var(--space-sm)}
+.mast-row{display:flex; justify-content:space-between; gap:var(--space-md); flex-wrap:wrap; padding-bottom:var(--space-sm); border-bottom:1px solid var(--rule)}
+.mast-row .mono b{color:var(--accent); font-weight:500}
+h1{
+  font-family:var(--font-display); font-variation-settings:"wdth" 95,"opsz" 72; font-weight:700;
+  font-size:clamp(34px,6vw,54px); line-height:.98; letter-spacing:-.03em; margin:var(--space-lg) 0 var(--space-md);
+  overflow-wrap:anywhere; min-width:0;
+}
+h1 em{font-family:var(--font-livery); font-style:italic; font-weight:800; color:var(--accent); letter-spacing:0; font-size:1.08em}
+.dek{font-size:var(--text-lg); font-variation-settings:"opsz" 24; color:var(--ink-2); max-width:58ch; margin:0 0 var(--space-lg)}
+.dek i{color:var(--accent)}
+
+/* almanac strip: real counts, computed */
+.almanac{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:2px solid var(--ink);
+  margin-bottom:var(--space-xl);
+}
+.almanac > div{padding:10px 14px 12px; border-right:1px solid var(--rule-2)}
+.almanac > div:last-child{border-right:0}
+.almanac .val{display:block; font-size:34px; margin-top:2px}
+.almanac .val.ink{color:var(--ink)}
+
+/* ---------- ledger of days ---------- */
+.ledger{border-top:2px solid var(--ink)}
+.entry{padding:var(--space-lg) 0 var(--space-xl); border-bottom:1px solid var(--rule-2); position:relative}
+.entry:last-child{border-bottom:2px solid var(--ink)}
+.entry.killed .subject, .entry.killed .blurb{color:var(--muted)}
+.entry.killed .subject{text-decoration:line-through; text-decoration-color:var(--accent); text-decoration-thickness:2px}
+.entry.killed .draft, .entry.killed .channel-bar, .entry.killed details{display:none}
+
+.entry-head{display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:var(--space-md); align-items:start}
+.numeral{font-size:64px; padding-top:2px; min-width:76px}
+.entry-head .when{padding-top:8px}
+.subject{
+  font-family:var(--font-display); font-variation-settings:"wdth" 96,"opsz" 40; font-weight:700;
+  font-size:var(--text-xl); line-height:1.1; letter-spacing:-.02em; margin:6px 0 4px; overflow-wrap:anywhere; min-width:0;
+}
+.blurb{font-style:italic; color:var(--quiet); margin:0; font-size:17px; max-width:60ch}
+
+/* status plate */
+.plate{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.16em; text-transform:uppercase;
+  border:1px solid var(--rule-2); padding:5px 9px; white-space:nowrap; color:var(--quiet); margin-top:10px;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.plate .dot{width:7px; height:7px; border-radius:50%; background:var(--muted)}
+.plate.ready .dot{background:var(--live); box-shadow:0 0 0 3px var(--live-halo)}
+.plate.ready{color:var(--live); border-color:var(--live)}
+.plate.needs{color:var(--accent); border-color:var(--accent)}
+.plate.needs .dot{background:var(--accent)}
+.plate.killed{color:var(--muted); border-style:dashed}
+
+/* channel bar: mono tabs + edit affordance */
+.channel-bar{
+  display:flex; align-items:baseline; gap:var(--space-md); margin:var(--space-lg) 0 var(--space-md);
+  border-top:1px solid var(--rule); padding-top:10px;
+}
+.tab{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.18em; text-transform:uppercase;
+  background:none; border:0; padding:0 0 4px; color:var(--quiet); cursor:pointer; border-bottom:2px solid transparent;
+  transition:color var(--dur) var(--ease-out);
+}
+.tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+.tab:hover{color:var(--ink)}
+.channel-bar .spacer{flex:1}
+.ghost{
+  font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.18em; text-transform:uppercase;
+  background:none; border:0; padding:0 0 4px; cursor:pointer; color:var(--accent);
+  border-bottom:1px dotted var(--accent);
+}
+.ghost:hover{color:var(--ink); border-bottom-color:var(--ink)}
+.ghost.quiet{color:var(--quiet); border-bottom-color:var(--rule-2)}
+.ghost:disabled{color:var(--muted); border-bottom-color:transparent; cursor:default}
+
+/* the draft, in flow — never a box, never a scroller */
+.draft{
+  white-space:pre-wrap; font-family:var(--font-body); font-size:var(--text-base); line-height:1.6;
+  margin:0; color:var(--ink); overflow:visible; max-height:none; overflow-wrap:anywhere;
+}
+.draft.placeholder{color:var(--quiet); font-style:italic}
+.draft.placeholder::before{content:"¶ "; color:var(--accent); font-style:normal}
+textarea.draft{
+  display:block; width:100%; border:0; border-left:3px solid var(--accent); padding:0 0 0 14px; margin-left:-17px;
+  background:transparent; resize:none; overflow:hidden; outline:none; color:var(--ink);
+}
+textarea.draft:focus-visible{outline:2px solid var(--accent); outline-offset:6px}
+.draft-foot{display:flex; gap:var(--space-md); flex-wrap:wrap; margin-top:10px}
+.draft-foot .over{color:var(--accent)}
+.editing-actions{display:flex; gap:var(--space-md); margin-top:var(--space-md)}
+
+/* metadata, collapsed */
+details.meta{margin-top:var(--space-lg); border-top:1px dashed var(--rule-2); padding-top:10px}
+details.meta summary{list-style:none; cursor:pointer; display:flex; gap:10px; align-items:baseline}
+details.meta summary::-webkit-details-marker{display:none}
+details.meta summary::before{content:"+"; color:var(--accent); font-family:var(--font-mono)}
+details.meta[open] summary::before{content:"–"}
+.meta-grid{display:grid; grid-template-columns:110px minmax(0,1fr); gap:6px 14px; margin-top:12px; font-size:15px; color:var(--ink-2)}
+.meta-grid .mono{padding-top:4px}
+
+/* decisions */
+.decide{display:flex; gap:var(--space-lg); margin-top:var(--space-lg); flex-wrap:wrap}
+.decide .ghost.on{color:var(--ink); border-bottom:2px solid var(--ink)}
+.decide .ghost.on.kill{color:var(--accent); border-bottom-color:var(--accent)}
+.decide .ghost.on.approve{color:var(--live); border-bottom-color:var(--live)}
+
+/* ---------- story queue ---------- */
+.queue{margin-top:var(--space-2xl)}
+.queue-head{display:flex; align-items:baseline; gap:var(--space-md); border-bottom:2px solid var(--ink); padding-bottom:6px}
+.queue-head h2{font-family:var(--font-display); font-variation-settings:"wdth" 95,"opsz" 40; font-weight:700; font-size:var(--text-2xl); letter-spacing:-.025em; margin:0; line-height:1}
+.queue-head .count{font-size:44px}
+.queue-dek{color:var(--quiet); font-style:italic; margin:10px 0 6px; font-size:17px}
+.qrow{display:grid; grid-template-columns:52px minmax(0,1fr) auto; gap:var(--space-md); align-items:baseline; padding:14px 0; border-bottom:1px solid var(--rule)}
+.qrow:last-child{border-bottom:1px solid var(--rule-2)}
+.qrow .rank{font-size:30px}
+.qrow .title{font-size:var(--text-base); margin:0 0 3px}
+.qrow.promoted .title::after{content:" · promoted"; font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:.16em; text-transform:uppercase; color:var(--live)}
+.qrow .kind{display:inline-block; border:1px solid var(--rule-2); padding:2px 6px; margin-top:2px}
+
+/* ---------- foot microframe ---------- */
+.foot{margin-top:var(--space-2xl); border-top:3px solid var(--ink); padding-top:var(--space-sm); display:flex; justify-content:space-between; gap:var(--space-md); flex-wrap:wrap}
+.foot .actions{display:flex; gap:var(--space-lg)}
+
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:640px){
+  .almanac{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .almanac > div:nth-child(2){border-right:0}
+  .almanac > div:nth-child(-n+2){border-bottom:1px solid var(--rule-2)}
+  .entry-head{grid-template-columns:auto minmax(0,1fr)}
+  .entry-head .plate{grid-column:2}
+  .numeral{font-size:48px; min-width:58px}
+  .mast-row{flex-direction:column; gap:4px}
+  .meta-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mast-row">
+      <span class="mono">SocialBot · <b>Editorial desk</b> · No. 37</span>
+      <span class="mono">Model A · rolling day-ahead · same-day Scout · five posts a day at most</span>
+    </div>
+    <h1>Week of <em>7 September</em></h1>
+    <p class="dek">One entry per weekday, copy first. Read the LinkedIn draft in full, flip to X inline, edit on the page. Metadata folds under each entry. <i>Alternates wait in the queue below the week.</i></p>
+    <div class="almanac" id="almanac"></div>
+  </header>
+
+  <section class="ledger" id="ledger" aria-label="Week of 7 September, one entry per day"></section>
+
+  <section class="queue" aria-label="Story queue">
+    <div class="queue-head">
+      <h2>Story queue</h2>
+      <span class="livery count" id="queueCount"></span>
+    </div>
+    <p class="queue-dek">Alternates under the week. Promote marks intent for Scout; the swap happens by editing the day it replaces.</p>
+    <div id="queue"></div>
+  </section>
+
+  <footer class="foot">
+    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only</span>
+    <span class="actions">
+      <button class="ghost" id="export" type="button">Export lock</button>
+      <button class="ghost quiet" id="reset" type="button">Reset board</button>
+    </span>
+  </footer>
+</div>
+
+<script>
+const KEY = "socialbot-board-v4-2026-09-07";
+
+const DATA = {
+  weekOf: "2026-09-07",
+  days: [
+    { id:"mon", date:"2026-09-07", dow:"Monday", short:"Mon", num:"07", subject:"Square for AI",
+      blurb:"SMB adoption gap and the Square-for-AI thesis.", status:"ready", statusLabel:"Ready · waiting lock",
+      format:"Text + graphic", source:"Ian 9/1 rewrite + Fed adoption graphic", type:"Essay", graphic:"Fed adoption",
+      linkedin:`SQUARE FOR AI
+
+Wrote this recently in an essay but absolutely think there's a "Square for AI" type business to be built right now.
+
+So far small businesses aren't really adopting AI. A Fed report surveyed small employers and while 46% are using AI, only 7% have fully integrated it. AI adoption isn't binary, its a scale. Just using Claude to check your emails or send you customer service reports is merely scratching the surface. Agents can now fully automate entire backoffice workflows if someone actually spends the time to set it up.
+
+The market is there. The report also said that 43% of users struggled to adapt these tools and 54% of planned adopters found it hard to find a tool that fit their needs.`,
+      x:`there's a square for AI to be built right now.
+
+fed: 46% of small employers using AI, 7% fully integrated. 43% struggled to adapt the tools, 54% of planned adopters couldn't find a fit.
+
+claude for email isn't adoption. agents can run the back office if someone sets it up.` },
+    { id:"tue", date:"2026-09-08", dow:"Tuesday", short:"Tue", num:"08", subject:"Katz clip",
+      blurb:"Agents need identity, authorization and a budget before autonomy.", status:"ready", statusLabel:"Clip ready · captions draft",
+      format:"Vertical clip + captions", source:"Aaron Katz · ClickHouse · 20VC, sequential VO vertical ~60s", type:"Clip", graphic:"Clip package",
+      linkedin:`Agents that provision infra need identity, authorization, and a budget first.
+
+Human oversight is still carrying most of these systems. The control plane is the product before autonomy is.
+
+(Clip: Aaron Katz · ClickHouse · 20VC — sequential VO vertical ~60s)`,
+      x:`agents that provision infra need identity, authorization, and a budget first.
+
+human oversight is still carrying the system. control plane before autonomy.` },
+    { id:"wed", date:"2026-09-09", dow:"Wednesday", short:"Wed", num:"09", subject:"Nvidia China-hedge",
+      blurb:"Nvidia open source as a hedge against Chinese models on Chinese chips.", status:"needs", statusLabel:"Needs draft",
+      format:"Essay slice / thread", source:"Nvidia essay §7, China-hedge twist", type:"Essay", graphic:"—",
+      linkedin:"Needs draft. Source is the Nvidia essay, section seven, the China-hedge twist. Lock the week to greenlight.",
+      x:"Needs draft. Nvidia essay §7. Lock the week to greenlight.", placeholder:true },
+    { id:"thu", date:"2026-09-10", dow:"Thursday", short:"Thu", num:"10", subject:"News slot",
+      blurb:"Open news slot. Scout candidates are waiting in the queue.", status:"needs", statusLabel:"Needs your take",
+      format:"News + Ian take", source:"Scout candidates", type:"News", graphic:"—",
+      linkedin:"Needs your take. Candidates: GitHub HydraFusion routing; CIO Dive outcome billing; Cisco open-weight agent traffic.",
+      x:"Needs your take. Candidates: HydraFusion routing; CIO Dive outcome billing; Cisco open-weight agent traffic.", placeholder:true },
+    { id:"fri", date:"2026-09-11", dow:"Friday", short:"Fri", num:"11", subject:"CVE parabolic chart",
+      blurb:"Critical CVEs went from under a hundred a month to six hundred plus.", status:"ready", statusLabel:"Draft ready",
+      format:"Chart or text", source:"CoS CVE parabolic chart / draft", type:"Chart", graphic:"a16z critical vulns parabolic",
+      linkedin:`Critical and high-severity CVEs at major software cos went from under ~100 critical a month to 600+, with high over 2,000, in mid-2026.
+
+That is not a slow creep. Patch calendars, SLA clocks, and cyber insurance models were still priced for the old slope.
+
+If you are also shipping agents with write access into that stack, I think the control plane problem and the vuln problem are the same budget conversation. One without the other is theater.`,
+      x:`critical cves at big software cos went from under ~100/month to 600+. high severity cleared 2,000.
+
+patch calendars and cyber insurance were priced for the old slope.
+
+if you're also giving agents write access into that stack, the control plane and the vuln budget are the same conversation.` }
+  ],
+  queue: [
+    { id:"q-hydrafusion", kind:"Scout",   title:"GitHub HydraFusion multi-model routing, cost vs quality" },
+    { id:"q-cio-dive",    kind:"Scout",   title:"CIO Dive on agentic outcome-based billing" },
+    { id:"q-anthropic",   kind:"Scout",   title:"Anthropic compute commitments in gigawatts (The Information)" },
+    { id:"q-openai-wiki", kind:"Scout",   title:"OpenAI wiki incident → disclosure framework" },
+    { id:"q-singerman",   kind:"Holding", title:"Singerman: concentration is not calibration" },
+    { id:"q-ken-roi",     kind:"Holding", title:"Ken: ROI without a denominator" },
+    { id:"q-lambda",      kind:"Swap",    title:"Anthropic–Lambda Nvidia lease stack" }
+  ]
+};
+
+/* ---------- state ---------- */
+function fresh(){
+  const s = { days:{}, promoted:{} };
+  DATA.days.forEach(d => s.days[d.id] = { decision:null, linkedin:d.linkedin, x:d.x, view:"linkedin", editing:false, editedAt:null });
+  DATA.queue.forEach(q => s.promoted[q.id] = false);
+  return s;
+}
+function load(){
+  const s = fresh();
+  try{
+    const raw = JSON.parse(localStorage.getItem(KEY) || "null");
+    if(raw && raw.days){
+      DATA.days.forEach(d => { if(raw.days[d.id]) Object.assign(s.days[d.id], raw.days[d.id], { editing:false }); });
+      if(raw.promoted) Object.keys(s.promoted).forEach(id => s.promoted[id] = !!raw.promoted[id]);
+    }
+  }catch(e){}
+  return s;
+}
+function persist(s){
+  const out = { days:{}, promoted:s.promoted };
+  Object.entries(s.days).forEach(([id,v]) => out.days[id] = { decision:v.decision, linkedin:v.linkedin, x:v.x, view:v.view, editedAt:v.editedAt });
+  try{ localStorage.setItem(KEY, JSON.stringify(out)); }catch(e){}
+}
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const stamp = () => new Date().toTimeString().slice(0,5);
+
+/* ---------- render ---------- */
+function almanacHTML(s){
+  const ready   = DATA.days.filter(d => d.status==="ready").length;
+  const needs   = DATA.days.filter(d => d.status==="needs").length;
+  const approved= DATA.days.filter(d => s.days[d.id].decision==="approve").length;
+  const revised = DATA.days.filter(d => { const v=s.days[d.id]; return v.linkedin!==d.linkedin || v.x!==d.x; }).length;
+  const cell = (label, val, ink) => `<div><span class="mono">${label}</span><span class="livery val ${ink?'ink':''}">${val}</span></div>`;
+  return cell("Ready", ready) + cell("Needs take", needs) + cell("Approved", approved, true) + cell("Revised", revised, true);
+}
+
+function entryHTML(d, v){
+  const isX = v.view==="x";
+  const body = isX ? v.x : v.linkedin;
+  const revised = (isX ? v.x!==d.x : v.linkedin!==d.linkedin);
+  const placeholder = d.placeholder && !revised;
+  const plateCls = v.decision==="kill" ? "killed" : d.status;
+  const plateLabel = v.decision==="kill" ? "Killed" : v.decision==="approve" ? "Approved" : d.statusLabel;
+  const xLen = [...v.x].length;
+  const foot = isX
+    ? `<span class="mono ${xLen>280?'over':''}">${xLen} characters · ${xLen>280 ? 'over 280' : 'under 280'}</span>`
+    : `<span class="mono">LinkedIn · ${[...v.linkedin].length} characters</span>`;
+  const revisedMark = revised ? `<span class="mono" style="color:var(--accent)">Revised ${v.editedAt||''}</span> <button class="ghost quiet" data-restore type="button">Restore generated</button>` : "";
+
+  const draft = v.editing
+    ? `<textarea class="draft" data-field spellcheck="true">${esc(body)}</textarea>
+       <div class="editing-actions"><button class="ghost" data-save type="button">Save</button><button class="ghost quiet" data-discard type="button">Discard</button></div>`
+    : `<p class="draft ${placeholder?'placeholder':''}">${esc(body)}</p>
+       <div class="draft-foot">${foot}${revisedMark}</div>`;
+
+  return `
+  <article class="entry ${v.decision==='kill'?'killed':''}" data-id="${d.id}">
+    <div class="entry-head">
+      <span class="livery numeral">${d.num}</span>
+      <div>
+        <span class="mono when">${d.dow} · ${d.short} ${d.num} Sept</span>
+        <h3 class="subject">${esc(d.subject)}</h3>
+        <p class="blurb">${esc(d.blurb)}</p>
+      </div>
+      <span class="plate ${plateCls} ${v.decision==='approve'?'ready':''}"><span class="dot"></span>${esc(plateLabel)}</span>
+    </div>
+
+    <div class="channel-bar" role="tablist">
+      <button class="tab" role="tab" data-view="linkedin" aria-selected="${!isX}" type="button">LinkedIn</button>
+      <button class="tab" role="tab" data-view="x" aria-selected="${isX}" type="button">X</button>
+      <span class="spacer"></span>
+      <button class="ghost" data-edit type="button" ${v.editing?'disabled':''}>Edit ${isX?'X':'LinkedIn'}</button>
+    </div>
+
+    ${draft}
+
+    <details class="meta">
+      <summary><span class="mono">Filed</span><span class="mono" style="color:var(--muted)">${esc(d.type)} · ${esc(d.format)}</span></summary>
+      <div class="meta-grid">
+        <span class="mono">Source</span><span>${esc(d.source)}</span>
+        <span class="mono">Format</span><span>${esc(d.format)}</span>
+        <span class="mono">Graphic</span><span>${esc(d.graphic)}</span>
+        <span class="mono">Channels</span><span>LinkedIn, then X</span>
+        <span class="mono">Date</span><span>${d.date}</span>
+      </div>
+    </details>
+
+    <div class="decide">
+      <button class="ghost quiet ${v.decision==='approve'?'on approve':''}" data-decide="approve" type="button">Approve</button>
+      <button class="ghost quiet ${v.decision==='hold'?'on':''}" data-decide="hold" type="button">Hold</button>
+      <button class="ghost quiet ${v.decision==='kill'?'on kill':''}" data-decide="kill" type="button">Kill</button>
+    </div>
+  </article>`;
+}
+
+function queueHTML(q, i, promoted){
+  return `
+  <div class="qrow ${promoted?'promoted':''}" data-qid="${q.id}">
+    <span class="livery rank">${String(i+1).padStart(2,"0")}</span>
+    <div><p class="title">${esc(q.title)}</p><span class="mono kind">${esc(q.kind)}</span></div>
+    <button class="ghost ${promoted?'quiet':''}" data-promote type="button">${promoted?'Undo':'Promote'}</button>
+  </div>`;
+}
+
+function render(s){
+  document.getElementById("almanac").innerHTML = almanacHTML(s);
+  document.getElementById("ledger").innerHTML = DATA.days.map(d => entryHTML(d, s.days[d.id])).join("");
+  document.getElementById("queue").innerHTML = DATA.queue.map((q,i) => queueHTML(q, i, s.promoted[q.id])).join("");
+  document.getElementById("queueCount").textContent = String(DATA.queue.length).padStart(2,"0");
+  wire(s);
+}
+
+function grow(ta){ ta.style.height="auto"; ta.style.height = ta.scrollHeight + "px"; }
+
+function wire(s){
+  document.querySelectorAll(".entry").forEach(el => {
+    const id = el.dataset.id, v = s.days[id], d = DATA.days.find(x => x.id===id);
+    el.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => { if(v.editing) return; v.view = b.dataset.view; persist(s); render(s); }));
+    el.querySelector("[data-edit]")?.addEventListener("click", () => { v.editing = true; render(s); const ta = document.querySelector(`.entry[data-id="${id}"] textarea`); grow(ta); ta.focus(); });
+    const ta = el.querySelector("textarea[data-field]");
+    if(ta){ grow(ta); ta.addEventListener("input", () => grow(ta)); }
+    el.querySelector("[data-save]")?.addEventListener("click", () => { v[v.view] = ta.value; v.editedAt = stamp(); v.editing = false; persist(s); render(s); });
+    el.querySelector("[data-discard]")?.addEventListener("click", () => { v.editing = false; render(s); });
+    el.querySelector("[data-restore]")?.addEventListener("click", () => { v[v.view] = d[v.view]; if(v.linkedin===d.linkedin && v.x===d.x) v.editedAt=null; persist(s); render(s); });
+    el.querySelectorAll("[data-decide]").forEach(b => b.addEventListener("click", () => { v.decision = v.decision===b.dataset.decide ? null : b.dataset.decide; persist(s); render(s); }));
+  });
+  document.querySelectorAll(".qrow").forEach(row => {
+    row.querySelector("[data-promote]").addEventListener("click", () => { s.promoted[row.dataset.qid] = !s.promoted[row.dataset.qid]; persist(s); render(s); });
+  });
+}
+
+function exportLock(s){
+  const payload = {
+    weekOf: DATA.weekOf, exportedAt: new Date().toISOString(),
+    days: DATA.days.map(d => { const v = s.days[d.id]; return { id:d.id, date:d.date, subject:d.subject, decision:v.decision, linkedin:v.linkedin, x:v.x, linkedinEdited:v.linkedin!==d.linkedin, xEdited:v.x!==d.x }; }),
+    queue: DATA.queue.map(q => ({ id:q.id, kind:q.kind, title:q.title, promoted:!!s.promoted[q.id] }))
+  };
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)], {type:"application/json"}));
+  a.download = `socialbot-lock-${DATA.weekOf}.json`; a.click(); URL.revokeObjectURL(a.href);
+}
+
+const state = load();
+render(state);
+document.getElementById("export").addEventListener("click", () => exportLock(state));
+document.getElementById("reset").addEventListener("click", () => { if(confirm("Reset decisions, edits and promotions for this week?")){ localStorage.removeItem(KEY); location.reload(); } });
+</script>
+</body>
+</html>
