@@ -155,6 +155,11 @@ details.meta[open] summary::before{content:"–"}
 .queue-head h2{font-family:var(--font-display); font-variation-settings:"wdth" 95,"opsz" 40; font-weight:700; font-size:var(--text-2xl); letter-spacing:-.025em; margin:0; line-height:1}
 .queue-head .count{font-size:44px}
 .queue-dek{color:var(--quiet); font-style:italic; margin:10px 0 6px; font-size:17px}
+.qsum{margin:6px 0 4px; font-family:var(--font-body); font-size:15px; line-height:1.45; color:var(--ink-2); max-width:62ch}
+.qurl{font-family:var(--font-mono); font-size:10px; letter-spacing:.04em; color:var(--quiet); text-decoration:underline; text-underline-offset:2px}
+.qurl:hover{color:var(--accent)}
+.channel-block{margin:0 0 var(--space-md)}
+.channel-label{font-family:var(--font-mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--quiet); margin:14px 0 6px}
 .qrow{display:grid; grid-template-columns:52px minmax(0,1fr) auto; gap:var(--space-md); align-items:baseline; padding:14px 0; border-bottom:1px solid var(--rule)}
 .qrow:last-child{border-bottom:1px solid var(--rule-2)}
 .qrow .rank{font-size:30px}
@@ -189,7 +194,7 @@ details.meta[open] summary::before{content:"–"}
       <span class="mono">Model A · rolling day-ahead · same-day Scout · five posts a day at most</span>
     </div>
     <h1>Week of <em>7 September</em></h1>
-    <p class="dek">One entry per weekday, copy first. Read the LinkedIn draft in full, flip to X inline, edit on the page. Metadata folds under each entry. <i>Alternates wait in the queue below the week.</i></p>
+    <p class="dek">One entry per weekday, copy first. LinkedIn and X both show in full under each day — edit either in place. Metadata folds under each entry. <i>Alternates wait in the queue below the week.</i></p>
     <div class="almanac" id="almanac"></div>
   </header>
 
@@ -200,7 +205,7 @@ details.meta[open] summary::before{content:"–"}
       <h2>Story queue</h2>
       <span class="livery count" id="queueCount"></span>
     </div>
-    <p class="queue-dek">Alternates under the week. Promote marks intent for Scout; the swap happens by editing the day it replaces.</p>
+    <p class="queue-dek">Alternates under the week — summaries inline, no click-hunting. Promote marks intent; swap by editing the day it replaces.</p>
     <div id="queue"></div>
   </section>
 
@@ -214,7 +219,7 @@ details.meta[open] summary::before{content:"–"}
 </div>
 
 <script>
-const KEY = "socialbot-board-v4-2026-09-07";
+const KEY = "socialbot-board-v4b";;
 
 const DATA = {
   weekOf: "2026-09-07",
@@ -246,15 +251,40 @@ Human oversight is still carrying most of these systems. The control plane is th
 
 human oversight is still carrying the system. control plane before autonomy.` },
     { id:"wed", date:"2026-09-09", dow:"Wednesday", short:"Wed", num:"09", subject:"Nvidia China-hedge",
-      blurb:"Nvidia open source as a hedge against Chinese models on Chinese chips.", status:"needs", statusLabel:"Needs draft",
-      format:"Essay slice / thread", source:"Nvidia essay §7, China-hedge twist", type:"Essay", graphic:"—",
-      linkedin:"Needs draft. Source is the Nvidia essay, section seven, the China-hedge twist. Lock the week to greenlight.",
-      x:"Needs draft. Nvidia essay §7. Lock the week to greenlight.", placeholder:true },
-    { id:"thu", date:"2026-09-10", dow:"Thursday", short:"Thu", num:"10", subject:"News slot",
-      blurb:"Open news slot. Scout candidates are waiting in the queue.", status:"needs", statusLabel:"Needs your take",
-      format:"News + Ian take", source:"Scout candidates", type:"News", graphic:"—",
-      linkedin:"Needs your take. Candidates: GitHub HydraFusion routing; CIO Dive outcome billing; Cisco open-weight agent traffic.",
-      x:"Needs your take. Candidates: HydraFusion routing; CIO Dive outcome billing; Cisco open-weight agent traffic.", placeholder:true },
+      blurb:"Nvidia’s open-model spend is a hedge against a substitute stack: Chinese weights on Chinese silicon — not charity vs rival software.", status:"needs", statusLabel:"Needs draft",
+      format:"Essay slice / thread", source:"Locked Nvidia essay · unused §7 twist (≠ 08-28 P&L take)", type:"Essay", graphic:"—",
+      linkedin:`DRAFT FRAME — edit or kill.
+
+Microsoft ran “commoditize your complement” against rival software vendors. Nvidia is running the same play against a different enemy: Chinese open models on Chinese chips.
+
+CUDA already locked the hardware layer. Nemotron + the tooling stack is the attempt to lock the model-layer experience while the weights stay open.
+
+The news (Poolside / Hugging Face talks) is public. The twist is the enemy, not the check size.
+
+Source essay locked; this social slice still needs your voice before ship.`,
+      x:`DRAFT FRAME — edit or kill.
+
+nvidia open-source spend isn’t vs rival software vendors. it’s a hedge against chinese models on chinese chips.
+
+cuda locked the rack. the tooling stack is the attempt to lock the model-layer experience while weights stay open.`, placeholder:true },
+    { id:"thu", date:"2026-09-10", dow:"Thursday", short:"Thu", num:"10", subject:"Cisco open-weight agent traffic",
+      blurb:"Cisco: most of ~90k-employee agent traffic hits open weights on Cisco GPUs; frontier APIs only for the hard remainder.", status:"needs", statusLabel:"Needs your take",
+      format:"News + Ian take", source:"https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-models", type:"News", graphic:"—",
+      linkedin:`Cisco says 50–60% of MyAgent requests across ~90,000 employees run on open-weight models on GPUs Cisco owns. Another 20–30% never hit a generative model at all — ordinary automation. Frontier APIs (Azure OpenAI, Claude, Gemini) only get the hard remainder.
+
+That is not a model bake-off story. It is a routing + ownership story: the default path is self-hosted open weights, and the expensive frontier call is the exception.
+
+If your AI budget still assumes “everyone gets a frontier seat,” you are pricing the wrong default.
+
+Source: https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-models
+(Edit the take — this is a starter, not locked.)`,
+      x:`cisco: 50–60% of ~90k-employee agent traffic runs on open weights on their own gpus. another 20–30% never hits a gen model. frontier apis only get the hard remainder.
+
+default path is owned open weights. frontier is the exception.
+
+if your budget still assumes everyone gets a frontier seat, you’re pricing the wrong default.
+
+https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-models`, placeholder:true },
     { id:"fri", date:"2026-09-11", dow:"Friday", short:"Fri", num:"11", subject:"CVE parabolic chart",
       blurb:"Critical CVEs went from under a hundred a month to six hundred plus.", status:"ready", statusLabel:"Draft ready",
       format:"Chart or text", source:"CoS CVE parabolic chart / draft", type:"Chart", graphic:"a16z critical vulns parabolic",
@@ -270,20 +300,34 @@ patch calendars and cyber insurance were priced for the old slope.
 if you're also giving agents write access into that stack, the control plane and the vuln budget are the same conversation.` }
   ],
   queue: [
-    { id:"q-hydrafusion", kind:"Scout",   title:"GitHub HydraFusion multi-model routing, cost vs quality" },
-    { id:"q-cio-dive",    kind:"Scout",   title:"CIO Dive on agentic outcome-based billing" },
-    { id:"q-anthropic",   kind:"Scout",   title:"Anthropic compute commitments in gigawatts (The Information)" },
-    { id:"q-openai-wiki", kind:"Scout",   title:"OpenAI wiki incident → disclosure framework" },
-    { id:"q-singerman",   kind:"Holding", title:"Singerman: concentration is not calibration" },
-    { id:"q-ken-roi",     kind:"Holding", title:"Ken: ROI without a denominator" },
-    { id:"q-lambda",      kind:"Swap",    title:"Anthropic–Lambda Nvidia lease stack" }
+    { id:"q-cio-dive", kind:"Scout", title:"CIO Dive: agentic AI → outcome-based billing",
+      url:"https://www.ciodive.com/news/agentic-ai-outcome-pricing-models/829023/",
+      summary:"Vendors pushing outcome / usage pricing for agents. Operator ask: force a billable outcome unit, a measurement owner, and failure credits into Monday renewals — or you eat unbounded spend." },
+    { id:"q-hydrafusion", kind:"Scout", title:"GitHub HydraFusion multi-model routing",
+      url:"https://venturebeat.com/orchestration/githubs-hydrafusion-cuts-ai-coding-costs-in-every-benchmark-it-only-matches-quality-in-one",
+      summary:"Claims up to ~67% lower est. cost vs Opus 5 on some benches, quality match only on ~1/3. Don’t buy the 67% headline alone — pilot with a quality+cost scorecard." },
+    { id:"q-anthropic", kind:"Scout", title:"Anthropic ~$517B compute / ≥14.8 GW (TI, paywalled)",
+      url:"https://www.theinformation.com/articles/anthropic-clinched-517-billion-compute-deals-11-months",
+      summary:"Re-price multi-year GPU/power offtakes before locking 2027–28 AI infra. Paywalled — only useful if you want the mega-infra lane." },
+    { id:"q-openai-wiki", kind:"Scout", title:"OpenAI confirms wiki incident; working on disclosure framework",
+      url:"https://techcrunch.com/2026/09/05/openai-confirms-wiki-incident-says-its-working-on-a-framework-for-more-disclosure/",
+      summary:"Require outbound controls + independent eval for any agent with write access. Disclosure theater ≠ control plane." },
+    { id:"q-singerman", kind:"Holding", title:"Singerman: concentration ≠ calibration",
+      url:"",
+      summary:"Already drafted 2026-09-04. Best option ≠ great option; concentrate only past an absolute bar. Holding unless you want it over a Scout day." },
+    { id:"q-ken-roi", kind:"Holding", title:"Ken: ROI without a denominator",
+      url:"",
+      summary:"Already drafted 2026-09-03. Prove-ROI is top priority while production rate often unmeasured; 76% AI spend is IT reallocation. Holding." },
+    { id:"q-lambda", kind:"Swap", title:"Anthropic–Lambda ~$35B / Nvidia lease stack (WSJ)",
+      url:"https://www.wsj.com/tech/ai/anthropic-signs-35-billion-cloud-deal-backed-by-nvidia-f12622f1",
+      summary:"Three-party lease / neocloud math vs pure megawatt framing. Distinct from 08-27 megawatt draft if used." }
   ]
 };
 
 /* ---------- state ---------- */
 function fresh(){
   const s = { days:{}, promoted:{} };
-  DATA.days.forEach(d => s.days[d.id] = { decision:null, linkedin:d.linkedin, x:d.x, view:"linkedin", editing:false, editedAt:null });
+  DATA.days.forEach(d => s.days[d.id] = { decision:null, linkedin:d.linkedin, x:d.x, editing:false, editedAt:null });
   DATA.queue.forEach(q => s.promoted[q.id] = false);
   return s;
 }
@@ -300,7 +344,7 @@ function load(){
 }
 function persist(s){
   const out = { days:{}, promoted:s.promoted };
-  Object.entries(s.days).forEach(([id,v]) => out.days[id] = { decision:v.decision, linkedin:v.linkedin, x:v.x, view:v.view, editedAt:v.editedAt });
+  Object.entries(s.days).forEach(([id,v]) => out.days[id] = { decision:v.decision, linkedin:v.linkedin, x:v.x, editedAt:v.editedAt });
   try{ localStorage.setItem(KEY, JSON.stringify(out)); }catch(e){}
 }
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
@@ -317,23 +361,29 @@ function almanacHTML(s){
 }
 
 function entryHTML(d, v){
-  const isX = v.view==="x";
-  const body = isX ? v.x : v.linkedin;
-  const revised = (isX ? v.x!==d.x : v.linkedin!==d.linkedin);
-  const placeholder = d.placeholder && !revised;
+  const editing = v.editing; // "linkedin" | "x" | false
+  const liRevised = v.linkedin!==d.linkedin;
+  const xRevised = v.x!==d.x;
+  const placeholder = d.placeholder && !liRevised && !xRevised;
   const plateCls = v.decision==="kill" ? "killed" : d.status;
   const plateLabel = v.decision==="kill" ? "Killed" : v.decision==="approve" ? "Approved" : d.statusLabel;
   const xLen = [...v.x].length;
-  const foot = isX
-    ? `<span class="mono ${xLen>280?'over':''}">${xLen} characters · ${xLen>280 ? 'over 280' : 'under 280'}</span>`
-    : `<span class="mono">LinkedIn · ${[...v.linkedin].length} characters</span>`;
-  const revisedMark = revised ? `<span class="mono" style="color:var(--accent)">Revised ${v.editedAt||''}</span> <button class="ghost quiet" data-restore type="button">Restore generated</button>` : "";
+  const liMark = liRevised ? `<span class="mono" style="color:var(--accent)">Revised ${v.editedAt||''}</span> <button class="ghost quiet" data-restore="linkedin" type="button">Restore LI</button>` : "";
+  const xMark = xRevised ? `<span class="mono" style="color:var(--accent)">Revised ${v.editedAt||''}</span> <button class="ghost quiet" data-restore="x" type="button">Restore X</button>` : "";
 
-  const draft = v.editing
-    ? `<textarea class="draft" data-field spellcheck="true">${esc(body)}</textarea>
-       <div class="editing-actions"><button class="ghost" data-save type="button">Save</button><button class="ghost quiet" data-discard type="button">Discard</button></div>`
-    : `<p class="draft ${placeholder?'placeholder':''}">${esc(body)}</p>
-       <div class="draft-foot">${foot}${revisedMark}</div>`;
+  const liBlock = editing==="linkedin"
+    ? `<textarea class="draft" data-field="linkedin" spellcheck="true">${esc(v.linkedin)}</textarea>
+       <div class="editing-actions"><button class="ghost" data-save="linkedin" type="button">Save LinkedIn</button><button class="ghost quiet" data-discard type="button">Discard</button></div>`
+    : `<p class="draft ${placeholder?'placeholder':''}">${esc(v.linkedin)}</p>
+       <div class="draft-foot"><span class="mono">LinkedIn · ${[...v.linkedin].length} characters</span>${liMark}
+       <button class="ghost" data-edit="linkedin" type="button">Edit LinkedIn</button></div>`;
+
+  const xBlock = editing==="x"
+    ? `<textarea class="draft" data-field="x" spellcheck="true">${esc(v.x)}</textarea>
+       <div class="editing-actions"><button class="ghost" data-save="x" type="button">Save X</button><button class="ghost quiet" data-discard type="button">Discard</button></div>`
+    : `<p class="draft ${placeholder?'placeholder':''}">${esc(v.x)}</p>
+       <div class="draft-foot"><span class="mono ${xLen>280?'over':''}">X · ${xLen} characters · ${xLen>280?'over 280':'under 280'}</span>${xMark}
+       <button class="ghost" data-edit="x" type="button">Edit X</button></div>`;
 
   return `
   <article class="entry ${v.decision==='kill'?'killed':''}" data-id="${d.id}">
@@ -347,14 +397,12 @@ function entryHTML(d, v){
       <span class="plate ${plateCls} ${v.decision==='approve'?'ready':''}"><span class="dot"></span>${esc(plateLabel)}</span>
     </div>
 
-    <div class="channel-bar" role="tablist">
-      <button class="tab" role="tab" data-view="linkedin" aria-selected="${!isX}" type="button">LinkedIn</button>
-      <button class="tab" role="tab" data-view="x" aria-selected="${isX}" type="button">X</button>
-      <span class="spacer"></span>
-      <button class="ghost" data-edit type="button" ${v.editing?'disabled':''}>Edit ${isX?'X':'LinkedIn'}</button>
+    <div class="channel-block">
+      <div class="channel-label">LinkedIn</div>
+      ${liBlock}
+      <div class="channel-label">X</div>
+      ${xBlock}
     </div>
-
-    ${draft}
 
     <details class="meta">
       <summary><span class="mono">Filed</span><span class="mono" style="color:var(--muted)">${esc(d.type)} · ${esc(d.format)}</span></summary>
@@ -376,10 +424,17 @@ function entryHTML(d, v){
 }
 
 function queueHTML(q, i, promoted){
+  const link = q.url ? `<a class="qurl" href="${esc(q.url)}" target="_blank" rel="noopener">${esc(q.url.replace(/^https?:\/\//,'').slice(0,48))}${q.url.length>48?'…':''}</a>` : '';
+  const sum = q.summary ? `<p class="qsum">${esc(q.summary)}</p>` : '';
   return `
   <div class="qrow ${promoted?'promoted':''}" data-qid="${q.id}">
     <span class="livery rank">${String(i+1).padStart(2,"0")}</span>
-    <div><p class="title">${esc(q.title)}</p><span class="mono kind">${esc(q.kind)}</span></div>
+    <div>
+      <p class="title">${esc(q.title)}</p>
+      <span class="mono kind">${esc(q.kind)}</span>
+      ${sum}
+      ${link}
+    </div>
     <button class="ghost ${promoted?'quiet':''}" data-promote type="button">${promoted?'Undo':'Promote'}</button>
   </div>`;
 }
@@ -397,14 +452,30 @@ function grow(ta){ ta.style.height="auto"; ta.style.height = ta.scrollHeight + "
 function wire(s){
   document.querySelectorAll(".entry").forEach(el => {
     const id = el.dataset.id, v = s.days[id], d = DATA.days.find(x => x.id===id);
-    el.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => { if(v.editing) return; v.view = b.dataset.view; persist(s); render(s); }));
-    el.querySelector("[data-edit]")?.addEventListener("click", () => { v.editing = true; render(s); const ta = document.querySelector(`.entry[data-id="${id}"] textarea`); grow(ta); ta.focus(); });
+    el.querySelectorAll("[data-edit]").forEach(b => b.addEventListener("click", () => {
+      v.editing = b.dataset.edit; render(s);
+      const ta = document.querySelector(`.entry[data-id="${id}"] textarea[data-field]`);
+      if(ta){ grow(ta); ta.focus(); ta.addEventListener("input", () => grow(ta)); }
+    }));
     const ta = el.querySelector("textarea[data-field]");
     if(ta){ grow(ta); ta.addEventListener("input", () => grow(ta)); }
-    el.querySelector("[data-save]")?.addEventListener("click", () => { v[v.view] = ta.value; v.editedAt = stamp(); v.editing = false; persist(s); render(s); });
+    el.querySelectorAll("[data-save]").forEach(b => b.addEventListener("click", () => {
+      const field = b.dataset.save;
+      const box = el.querySelector(`textarea[data-field="${field}"]`);
+      if(box) v[field] = box.value;
+      v.editedAt = stamp(); v.editing = false; persist(s); render(s);
+    }));
     el.querySelector("[data-discard]")?.addEventListener("click", () => { v.editing = false; render(s); });
-    el.querySelector("[data-restore]")?.addEventListener("click", () => { v[v.view] = d[v.view]; if(v.linkedin===d.linkedin && v.x===d.x) v.editedAt=null; persist(s); render(s); });
-    el.querySelectorAll("[data-decide]").forEach(b => b.addEventListener("click", () => { v.decision = v.decision===b.dataset.decide ? null : b.dataset.decide; persist(s); render(s); }));
+    el.querySelectorAll("[data-restore]").forEach(b => b.addEventListener("click", () => {
+      const field = b.dataset.restore;
+      v[field] = d[field];
+      if(v.linkedin===d.linkedin && v.x===d.x) v.editedAt=null;
+      persist(s); render(s);
+    }));
+    el.querySelectorAll("[data-decide]").forEach(b => b.addEventListener("click", () => {
+      v.decision = v.decision===b.dataset.decide ? null : b.dataset.decide;
+      persist(s); render(s);
+    }));
   });
   document.querySelectorAll(".qrow").forEach(row => {
     row.querySelector("[data-promote]").addEventListener("click", () => { s.promoted[row.dataset.qid] = !s.promoted[row.dataset.qid]; persist(s); render(s); });
@@ -415,7 +486,7 @@ function exportLock(s){
   const payload = {
     weekOf: DATA.weekOf, exportedAt: new Date().toISOString(),
     days: DATA.days.map(d => { const v = s.days[d.id]; return { id:d.id, date:d.date, subject:d.subject, decision:v.decision, linkedin:v.linkedin, x:v.x, linkedinEdited:v.linkedin!==d.linkedin, xEdited:v.x!==d.x }; }),
-    queue: DATA.queue.map(q => ({ id:q.id, kind:q.kind, title:q.title, promoted:!!s.promoted[q.id] }))
+    queue: DATA.queue.map(q => ({ id:q.id, kind:q.kind, title:q.title, summary:q.summary||'', url:q.url||'', promoted:!!s.promoted[q.id] }))
   };
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)], {type:"application/json"}));
