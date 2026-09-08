@@ -251,7 +251,7 @@ details.meta[open] summary::before{content:"–"}
   </section>
 
   <footer class="foot">
-    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only · KEY socialbot-board-v4d</span>
+    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only · KEY socialbot-board-v4e</span>
     <span class="actions">
       <button class="ghost quiet" id="reset" type="button">Reset board</button>
     </span>
@@ -259,7 +259,7 @@ details.meta[open] summary::before{content:"–"}
 </div>
 
 <script>
-const KEY = "socialbot-board-v4d";
+const KEY = "socialbot-board-v4e";
 
 const DATA = {
   weekOf: "2026-09-07",
@@ -274,7 +274,18 @@ Wrote this recently in an essay but absolutely think there's a "Square for AI" t
 So far small businesses aren't really adopting AI. A Fed report surveyed small employers and while 46% are using AI, only 7% have fully integrated it. AI adoption isn't binary, its a scale. Just using Claude to check your emails or send you customer service reports is merely scratching the surface. Agents can now fully automate entire backoffice workflows if someone actually spends the time to set it up.
 
 The market is there. The report also said that 43% of users struggled to adapt these tools and 54% of planned adopters found it hard to find a tool that fit their needs.`,
-      x:`absolutely think there's a square for AI to be built right now.  fed: 46% of small employers using AI, 7% fully integrated. 43% struggled to adapt the tools, 54% of planned adopters couldn't find a fit. all of that is ripe ingredients for a SMB focused AI company.   a lot of people think the answer is consulting but, as someone who does consulting, I don't think thats right. the right solution needs to be a lot more scalable (so software), and not turn AI into yet another monthly fee they need to pay. there's a reason there isn't a mckinsey for small businesses; they don't need the added cost burden.` },
+      x:`absolutely think there's a square for AI to be built right now.
+
+fed: 46% of small employers using AI, 7% fully integrated.
+
+43% struggled to adapt the tools.
+54% of planned adopters couldn't find a fit.
+
+all of that is ripe ingredients for a SMB focused AI company.
+
+a lot of people think the answer is consulting but, as someone who does consulting, I don't think thats right. the right solution needs to be a lot more scalable (so software), and not turn AI into yet another monthly fee they need to pay.
+
+there's a reason there isn't a mckinsey for small businesses; they don't need the added cost burden.` },
     { id:"tue", date:"2026-09-08", dow:"Tuesday", short:"Tue", num:"08", subject:"Katz clip",
       blurb:"Agents need identity, authorization and a budget before autonomy.", status:"ready", statusLabel:"Clip ready · captions draft",
       format:"Vertical clip + captions", source:"Aaron Katz · ClickHouse · 20VC, sequential VO vertical ~60s", type:"Clip", graphic:"Clip package",
@@ -318,17 +329,17 @@ Routing and ownership is becoming a much bigger topic in enterprise AI. Many F10
 If your AI budget is still assuming that everyone gets an unlimited frontier seat, you're wasting money` },
     { id:"fri", date:"2026-09-11", dow:"Friday", short:"Fri", num:"11", subject:"CVE parabolic chart",
       blurb:"Critical CVEs went from under a hundred a month to six hundred plus.", status:"ready", statusLabel:"Draft ready",
-      format:"Chart or text", source:"CoS CVE parabolic chart / draft", type:"Chart", graphic:"a16z critical vulns parabolic",
+      format:"Chart + text", source:"CoS CVE parabolic chart / draft", type:"Chart", graphic:"a16z critical vulns parabolic (attach)",
       linkedin:`Critical and high-severity security vulnerabilities are skyrocketing (great chat from the a16z team.) Major software companies went from under ~100 critical a month to 600+, with high over 2,000, in mid-2026.
 
 That's hockey stick style growth while most of the cybersecurity world—patch calendars, SLA clocks, and cyber insurance models—are still priced for the old pre-AI world.
 
-You're also about to give agents write access into that same stack. The vuln budget and the agent control-plane budget are one decision. Treat them as two and you're buying theater.`,
+If you're also shipping agents with write access into that stack, the vuln budget and the control-plane budget are the same line item. Split them and you're buying theater.`,
       x:`critical cves at big software cos went from under ~100/month to 600+. high severity cleared 2,000.
 
 patch calendars and cyber insurance were priced for the old slope.
 
-if you're also giving agents write access into that stack, the control plane and the vuln budget are the same conversation.` }
+agents with write access into that stack make the vuln budget and the control-plane budget the same line item.` }
   ],
   queue: [
     { id:"q-cio-dive", kind:"Scout", title:"CIO Dive: agentic AI → outcome-based billing",
