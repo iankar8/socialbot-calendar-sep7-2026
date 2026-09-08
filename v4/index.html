@@ -95,6 +95,10 @@ h1 em{font-family:var(--font-livery); font-style:italic; font-weight:800; color:
 .plate.needs{color:var(--accent); border-color:var(--accent)}
 .plate.needs .dot{background:var(--accent)}
 .plate.killed{color:var(--muted); border-style:dashed}
+.plate.wrapped{color:var(--quiet); border-color:var(--rule-2); background:var(--paper-2)}
+.plate.wrapped .dot{background:var(--quiet)}
+.entry.wrapped .subject{color:var(--quiet)}
+.entry.wrapped .numeral{opacity:.55}
 
 /* channel bar: mono tabs + edit affordance */
 .channel-bar{
@@ -226,7 +230,7 @@ details.meta[open] summary::before{content:"–"}
       <span class="mono">Model A · rolling day-ahead · same-day Scout · five posts a day at most</span>
     </div>
     <h1>Week of <em>7 September</em></h1>
-    <p class="dek">One entry per weekday, copy first. LinkedIn and X both show in full under each day — edit either in place. Metadata folds under each entry. <i>Alternates wait in the queue below the week.</i></p>
+    <p class="dek">One entry per weekday, copy first. LinkedIn and X both show in full under each day — edit either in place. Metadata folds under each entry. <i>Mon wrapped · week starts Tue.</i> Alternates wait in the queue below.</p>
     <div class="almanac" id="almanac"></div>
     <div class="sendback">
       <p class="help">Paste the packet in SocialBot chat, or drop the JSON file there. Edits are not visible to SocialBot until you send.</p>
@@ -247,7 +251,7 @@ details.meta[open] summary::before{content:"–"}
   </section>
 
   <footer class="foot">
-    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only · KEY socialbot-board-v4c</span>
+    <span class="mono">Filed 2026-09-07 · never posts without lock · edits held in this browser only · KEY socialbot-board-v4d</span>
     <span class="actions">
       <button class="ghost quiet" id="reset" type="button">Reset board</button>
     </span>
@@ -255,13 +259,13 @@ details.meta[open] summary::before{content:"–"}
 </div>
 
 <script>
-const KEY = "socialbot-board-v4c";
+const KEY = "socialbot-board-v4d";
 
 const DATA = {
   weekOf: "2026-09-07",
   days: [
     { id:"mon", date:"2026-09-07", dow:"Monday", short:"Mon", num:"07", subject:"Square for AI",
-      blurb:"SMB adoption gap and the Square-for-AI thesis.", status:"ready", statusLabel:"Ready · waiting lock",
+      blurb:"SMB adoption gap and the Square-for-AI thesis.", status:"wrapped", statusLabel:"Wrapped",
       format:"Text + graphic", source:"Ian 9/1 rewrite + Fed adoption graphic", type:"Essay", graphic:"Fed adoption",
       linkedin:`SQUARE FOR AI
 
@@ -270,11 +274,7 @@ Wrote this recently in an essay but absolutely think there's a "Square for AI" t
 So far small businesses aren't really adopting AI. A Fed report surveyed small employers and while 46% are using AI, only 7% have fully integrated it. AI adoption isn't binary, its a scale. Just using Claude to check your emails or send you customer service reports is merely scratching the surface. Agents can now fully automate entire backoffice workflows if someone actually spends the time to set it up.
 
 The market is there. The report also said that 43% of users struggled to adapt these tools and 54% of planned adopters found it hard to find a tool that fit their needs.`,
-      x:`there's a square for AI to be built right now.
-
-fed: 46% of small employers using AI, 7% fully integrated. 43% struggled to adapt the tools, 54% of planned adopters couldn't find a fit.
-
-claude for email isn't adoption. agents can run the back office if someone sets it up.` },
+      x:`absolutely think there's a square for AI to be built right now.  fed: 46% of small employers using AI, 7% fully integrated. 43% struggled to adapt the tools, 54% of planned adopters couldn't find a fit. all of that is ripe ingredients for a SMB focused AI company.   a lot of people think the answer is consulting but, as someone who does consulting, I don't think thats right. the right solution needs to be a lot more scalable (so software), and not turn AI into yet another monthly fee they need to pay. there's a reason there isn't a mckinsey for small businesses; they don't need the added cost burden.` },
     { id:"tue", date:"2026-09-08", dow:"Tuesday", short:"Tue", num:"08", subject:"Katz clip",
       blurb:"Agents need identity, authorization and a budget before autonomy.", status:"ready", statusLabel:"Clip ready · captions draft",
       format:"Vertical clip + captions", source:"Aaron Katz · ClickHouse · 20VC, sequential VO vertical ~60s", type:"Clip", graphic:"Clip package",
@@ -289,51 +289,46 @@ Human oversight is still carrying most of these systems. The control plane is th
     { id:"wed", date:"2026-09-09", dow:"Wednesday", short:"Wed", num:"09", subject:"Nvidia China-hedge",
       blurb:"Nvidia’s open-model spend is a hedge against a substitute stack: Chinese weights on Chinese silicon — not charity vs rival software.", status:"needs", statusLabel:"Needs draft",
       format:"Essay slice / thread", source:"Locked Nvidia essay · unused §7 twist (≠ 08-28 P&L take)", type:"Essay", graphic:"—",
-      linkedin:`Joel Spolsky’s line still holds: “commoditize your complements.”
+      linkedin:`DRAFT FRAME — edit or kill.
 
-Microsoft ran that play against rival software vendors — open the layer next to yours so competitors can’t extract rent there. Nvidia is running the same play against a different enemy: Chinese models on Chinese chips as a substitute stack.
+Microsoft ran "commoditize your complement" against rival software vendors. Nvidia is running the same play against a different enemy: Chinese open models on Chinese chips.
 
-CUDA already locked the hardware layer. Nemotron + the tooling stack is the attempt to lock the model-layer experience while the weights stay open — so the substitute stack never becomes the default.
+CUDA already locked the hardware layer. Nemotron + the tooling stack is the attempt to lock the model-layer experience while the weights stay open.
 
 The news (Poolside / Hugging Face talks) is public. The twist is the enemy, not the check size.
 
 Source essay locked; this social slice still needs your voice before ship.`,
-      x:`joel spolsky: “commoditize your complements.”
+      x:`DRAFT FRAME — edit or kill.
 
-microsoft vs software vendors. nvidia vs chinese models on chinese chips — a substitute stack, not a rival product line.
+nvidia open-source spend isn’t vs rival software vendors. it’s a hedge against chinese models on chinese chips.
 
 cuda locked the rack. the tooling stack is the attempt to lock the model-layer experience while weights stay open.`, placeholder:true },
     { id:"thu", date:"2026-09-10", dow:"Thursday", short:"Thu", num:"10", subject:"Cisco open-weight agent traffic",
-      blurb:"Cisco: most of ~90k-employee agent traffic hits open weights on Cisco GPUs; frontier APIs only for the hard remainder.", status:"needs", statusLabel:"Needs your take",
+      blurb:"Cisco: most of ~90k-employee agent traffic hits open weights on Cisco GPUs; frontier APIs only for the hard remainder.", status:"ready", statusLabel:"Approved",
       format:"News + Ian take", source:"https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-models", type:"News", graphic:"—",
-      linkedin:`Cisco says 50–60% of MyAgent requests across ~90,000 employees run on open-weight models on GPUs Cisco owns. Another 20–30% never hit a generative model at all — ordinary automation. Frontier APIs (Azure OpenAI, Claude, Gemini) only get the hard remainder.
+      linkedin:`Some interesting data from Cisco: 50–60% of MyAgent requests across ~90,000 employees run on open-weight models on GPUs Cisco owns. Another 20–30% never hit a generative model at all, just going through ordinary automation. Frontier APIs (Azure OpenAI, Claude, Gemini) only get the hard remainder.
 
-That is not a model bake-off story. It is a routing + ownership story: the default path is self-hosted open weights, and the expensive frontier call is the exception.
+Routing and ownership is becoming a much bigger topic in enterprise AI. Many F1000 businesses are turning to self-hosted open weights and saving expensive frontier calls for complex queries.
 
-If your AI budget still assumes “everyone gets a frontier seat,” you are pricing the wrong default.
+If your AI budget is still assuming that everyone gets an unlimited frontier seat, you're wasting money.`,
+      x:`Some interesting data from Cisco: 50–60% of MyAgent requests across ~90,000 employees run on open-weight models on GPUs Cisco owns. Another 20–30% never hit a generative model at all, just going through ordinary automation. Frontier APIs (Azure OpenAI, Claude, Gemini) only get the hard remainder.
 
-Source: https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-models
-(Edit the take — this is a starter, not locked.)`,
-      x:`cisco: 50–60% of ~90k-employee agent traffic runs on open weights on their own gpus. another 20–30% never hits a gen model. frontier apis only get the hard remainder.
+Routing and ownership is becoming a much bigger topic in enterprise AI. Many F1000 businesses are turning to self-hosted open weights and saving expensive frontier calls for complex queries.
 
-default path is owned open weights. frontier is the exception.
-
-if your budget still assumes everyone gets a frontier seat, you’re pricing the wrong default.
-
-https://ai2.work/blog/cisco-sends-most-90-000-employee-ai-agent-traffic-to-open-models`, placeholder:true },
+If your AI budget is still assuming that everyone gets an unlimited frontier seat, you're wasting money` },
     { id:"fri", date:"2026-09-11", dow:"Friday", short:"Fri", num:"11", subject:"CVE parabolic chart",
       blurb:"Critical CVEs went from under a hundred a month to six hundred plus.", status:"ready", statusLabel:"Draft ready",
       format:"Chart or text", source:"CoS CVE parabolic chart / draft", type:"Chart", graphic:"a16z critical vulns parabolic",
-      linkedin:`Critical and high-severity CVEs at major software cos went from under ~100 critical a month to 600+, with high over 2,000, in mid-2026.
+      linkedin:`Critical and high-severity security vulnerabilities are skyrocketing (great chat from the a16z team.) Major software companies went from under ~100 critical a month to 600+, with high over 2,000, in mid-2026.
 
-That is not a slow creep. Patch calendars, SLA clocks, and cyber insurance models were still priced for linear growth.
+That's hockey stick style growth while most of the cybersecurity world—patch calendars, SLA clocks, and cyber insurance models—are still priced for the old pre-AI world.
 
-Meanwhile agents are getting write access into the same stack. The vuln budget and the agent control-plane budget are one decision, not two. Price them apart and you will underwrite the breach.`,
+You're also about to give agents write access into that same stack. The vuln budget and the agent control-plane budget are one decision. Treat them as two and you're buying theater.`,
       x:`critical cves at big software cos went from under ~100/month to 600+. high severity cleared 2,000.
 
-patch calendars were priced for linear growth. agents are getting write access into the same stack.
+patch calendars and cyber insurance were priced for the old slope.
 
-the vuln budget and the agent control-plane budget are one decision, not two.` }
+if you're also giving agents write access into that stack, the control plane and the vuln budget are the same conversation.` }
   ],
   queue: [
     { id:"q-cio-dive", kind:"Scout", title:"CIO Dive: agentic AI → outcome-based billing",
@@ -390,10 +385,11 @@ const stamp = () => new Date().toTimeString().slice(0,5);
 function almanacHTML(s){
   const ready   = DATA.days.filter(d => d.status==="ready").length;
   const needs   = DATA.days.filter(d => d.status==="needs").length;
-  const approved= DATA.days.filter(d => s.days[d.id].decision==="approve").length;
+  const wrapped = DATA.days.filter(d => d.status==="wrapped").length;
+  const approved= DATA.days.filter(d => s.days[d.id].decision==="approve" || d.status==="wrapped").length;
   const revised = DATA.days.filter(d => { const v=s.days[d.id]; return v.linkedin!==d.linkedin || v.x!==d.x; }).length;
   const cell = (label, val, ink) => `<div><span class="mono">${label}</span><span class="livery val ${ink?'ink':''}">${val}</span></div>`;
-  return cell("Ready", ready) + cell("Needs take", needs) + cell("Approved", approved, true) + cell("Revised", revised, true);
+  return cell("Ready", ready) + cell("Needs take", needs) + cell("Wrapped", wrapped, true) + cell("Revised", revised, true);
 }
 
 function entryHTML(d, v){
@@ -402,7 +398,7 @@ function entryHTML(d, v){
   const xRevised = v.x!==d.x;
   const placeholder = d.placeholder && !liRevised && !xRevised;
   const plateCls = v.decision==="kill" ? "killed" : d.status;
-  const plateLabel = v.decision==="kill" ? "Killed" : v.decision==="approve" ? "Approved" : d.statusLabel;
+  const plateLabel = v.decision==="kill" ? "Killed" : d.status==="wrapped" ? d.statusLabel : v.decision==="approve" ? "Approved" : d.statusLabel;
   const xLen = [...v.x].length;
   const liMark = liRevised ? `<span class="mono" style="color:var(--accent)">Revised ${v.editedAt||''}</span> <button class="ghost quiet" data-restore="linkedin" type="button">Restore LI</button>` : "";
   const xMark = xRevised ? `<span class="mono" style="color:var(--accent)">Revised ${v.editedAt||''}</span> <button class="ghost quiet" data-restore="x" type="button">Restore X</button>` : "";
@@ -418,11 +414,11 @@ function entryHTML(d, v){
     ? `<textarea class="draft" data-field="x" spellcheck="true">${esc(v.x)}</textarea>
        <div class="editing-actions"><button class="ghost" data-save="x" type="button">Save X</button><button class="ghost quiet" data-discard type="button">Discard</button></div>`
     : `<p class="draft ${placeholder?'placeholder':''}">${esc(v.x)}</p>
-       <div class="draft-foot"><span class="mono ${xLen>280?'over':''}">X · ${xLen} characters · ${xLen>280?'over 280':'under 280'}</span>${xMark}
+       <div class="draft-foot"><span class="mono">X · ${xLen} characters</span>${xMark}
        <button class="ghost" data-edit="x" type="button">Edit X</button></div>`;
 
   return `
-  <article class="entry ${v.decision==='kill'?'killed':''}" data-id="${d.id}">
+  <article class="entry ${v.decision==='kill'?'killed':(d.status==='wrapped'?'wrapped':'')}" data-id="${d.id}">
     <div class="entry-head">
       <span class="livery numeral">${d.num}</span>
       <div>
